@@ -37,3 +37,6 @@ terms of the MIT license. A copy of the license can be found in the file
 #endif
 #include "init.c"
 #include "options.c"
+#if defined(__ANDROID__)
+#include "android-options.c"
+#endif /* __ANDROID__ */

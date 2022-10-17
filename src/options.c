@@ -32,6 +32,7 @@ int mi_version(void) mi_attr_noexcept {
 #include <conio.h>
 #endif
 
+#if !defined(__ANDROID__)
 // --------------------------------------------------------
 // Options
 // These can be accessed by multiple threads and may be
@@ -168,6 +169,7 @@ void mi_option_enable(mi_option_t option) {
 void mi_option_disable(mi_option_t option) {
   mi_option_set_enabled(option,false);
 }
+#endif /* __ANDROID__ */
 
 
 static void mi_out_stderr(const char* msg, void* arg) {
@@ -446,6 +448,7 @@ void _mi_error_message(int err, const char* fmt, ...) {
   }
 }
 
+#if !defined(__ANDROID__)
 // --------------------------------------------------------
 // Initialize options by checking the environment
 // --------------------------------------------------------
@@ -625,3 +628,4 @@ static void mi_option_init(mi_option_desc_t* desc) {
     desc->init = DEFAULTED;
   }
 }
+#endif /* __ANDROID__ */
